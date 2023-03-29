@@ -1,0 +1,18 @@
+name: IETF Group/Draft Repo Backup
+description: A mechanism to create and archive backups of IETF group/draft repositories
+author: IETF Tools
+inputs:
+  token:
+    description: GitHub Token
+    required: true
+  repo:
+    description: GitHub Repository to backup (e.g. org/repo)
+    required: true
+runs:
+  using: composite
+  steps:
+    - run: python ./backup.py --repo ${{ inputs.repo }} --githubToken ${{ inputs.token }}
+      shell: bash
+branding:
+  icon: archive
+  color: purple
